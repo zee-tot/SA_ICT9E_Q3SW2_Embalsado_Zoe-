@@ -1,0 +1,275 @@
+<!DOCTYPE html> 
+
+<html>
+<head>
+
+    <!-- Title shown in the browser tab -->
+    <title>Q3 Seatwork 2</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+
+      summary{
+        background-color: pink;
+      }  
+
+      #villman, #silicon, #express{
+          height: 200px;
+          width: 300px;
+      }
+
+      .row {
+        display: flex;
+        text-align: center;
+      }
+
+      .row div {
+        flex: 1; 
+      }
+
+      #brands{
+        width: 860px;
+        background-color: rgba(231, 108, 184, 0.5); 
+        height: 200px;
+        padding: 20px;
+      }
+
+      body{
+        font-family: Gill Sans MT;
+        background-image: url('https://i.pinimg.com/originals/c6/35/6d/c6356d716748e7b195b1d622a5b4326d.gif');
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+
+      .navbar{
+        background-image: linear-gradient(to right, #fffafa, #f67dc8);
+      }
+
+      h1{
+        color: #fffefe;
+        text-shadow: 2px 2px #950068;
+      }
+
+      h3 {
+        color: white;
+        font-weight: bold;
+      }
+
+      .btn-custom {
+        background-color: #aa187c;
+        border-color: #ff97db;
+        color: white;
+      }
+
+      .btn-custom:hover {
+        background-color: #aa187c;
+        border-color: #aa187c;
+        color: white;
+      }
+
+      .btn-custom:active,
+      .btn-custom:focus {
+      background-color: #aa187c;
+      border-color: #aa187c;
+      color: white;
+      }
+
+      #buttons, #brand_btn{
+        color: #fffafa;
+        background-color: #f3aad3; 
+        border: 3px solid #ffffff;
+        border-radius: 20px;
+        width: 300px;
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      #brand_btn{
+        font-size: 15px;
+        background-image: linear-gradient(to right, #ffb7eb, #c33787);
+      }
+
+      #laptop{
+        height: 60px;
+        width: 60px;
+      }
+
+      #budget{
+        text-align: center;
+        font-size: 25px;
+        color: #ffffff;
+      }
+
+      .price-text {
+         color: #ffb7eb;
+        font-weight: bold;
+      }
+
+      .price-value {
+        font-size: 25px;
+        padding: 5px 10px;
+        background-color: #c6629b;
+        border-radius: 4px;
+      }
+
+      .footer {
+        margin-top: 10%;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-image: linear-gradient(to right, #ffffff, #fa9dd2);
+      }
+
+      b{
+        background-color: #c6629b;
+      }
+
+    </style>
+</head>
+
+<body>
+
+<!-- NAVIGATION BAR -->
+<nav class="navbar navbar-expand-md">
+  <div class="container-fluid">
+
+    <!-- Left side links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#" style="font-size: 20px; color:#ea6ab3;">Shop</a>
+        
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" style="font-size: 20px; color:#ea6ab3;">Locate</a>
+</a>
+      </li>
+    </ul>
+
+    <!-- Center Title -->
+    <center>
+      <h1>Product Locator</h1>
+    </center>
+
+    <!-- Search Bar -->
+    <form class="d-flex">
+      <input class="form-control me-2" type="text" placeholder="Search">
+      <button class="btn btn-custom" type="button">Search</button>
+    </form>
+
+  </div>
+</nav>
+
+<br>
+
+<!-- BUDGET SECTION -->
+<center>
+<div id="brands">
+
+  <form>
+    <h3>
+      Want makeup but don't know where to buy? 
+      <img id="laptop" src="https://i.pinimg.com/originals/d0/95/8a/d0958a757cbe2dbd3ae0fc8f2abf1813.gif">
+      <br>
+      Enter your budget and let's find the right brand for you!
+    </h3> 
+
+    <input type="text" class="form-control" id="budget" placeholder="Enter here...">
+  </form>
+
+</div>
+</center>
+
+<br>
+
+<!-- BUTTON SECTION -->
+<div class="container">
+  <div class="row">
+
+    <!-- Brand & Discount Button -->
+    <div>
+      <button id="buttons" class="btn" onclick="showBrand()">
+        Brand & Discounts
+      </button>
+
+      <!-- Output will appear here -->
+      <div id="brand"></div>
+    </div>
+
+    <!-- Store Location Button -->
+    <div>
+      <button id="buttons" class="btn" onclick="showStore()">
+        Store Location
+      </button>
+
+    <!-- Store info will appear here -->
+      <div id="stores"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- JAVASCRIPT SECTION -->
+<script>
+
+  function showBrand(){
+
+    // Get value from input field and convert to number
+    let budget = Number(document.getElementById('budget').value);
+
+    // Compute 20% discount
+    let disc = budget * 0.20;
+
+    // Format discount to 2 decimal places
+    let finalPrice = disc.toFixed(2);
+
+    // Display brands and discount inside "brand" div
+    document.getElementById("brand").innerHTML =
+
+      "<br><b style='color: white;'>Recommended Brands:<br>" +
+
+      "<button id='brand_btn' class='btn'>Dior</button><br>" +
+
+      "<button id='brand_btn' class='btn'>Kiko Milano</button><br>" +
+
+      "<button id='brand_btn' class='btn'>Rhode</button><br>" +
+
+      "<br><br>You are eligible for: " +
+
+
+      "<span class='price-text'><kbd class='price-value'>" +
+      finalPrice +
+      "</kbd></span> discount. </b>"
+  }
+
+
+  function showStore(){
+
+    // Insert store information inside "stores" div
+    document.getElementById("stores").innerHTML =
+
+      "<br><img id='villman' src='https://i.pinimg.com/736x/4e/fc/64/4efc64b3e38922bf8afabc9e4a51294a.jpg' class='img-thumbnail'><br>" +
+
+      "<br><b style='color: white;'>Location:<br>" +
+
+      "<i>Ground Floor, Uptown Mall, 9th Ave, Taguig, 1214 Metro Manila</i><br>" +
+
+      "<br><img id='silicon' src='dior.png' class='img-thumbnail'><br>" +
+
+      "<br><b style='color: white;'>Location:<br>" +
+
+      "<i>2nd Floor, Main Mall, SM Mall of Asia, Pasay City, 1300 Metro Manila</i>";
+  }
+
+</script>
+
+<br><br><br>
+
+<!-- FOOTER -->
+<div class="footer">
+  <center> <label style="color:#e354a5;">&copy; 2026 Product Locator | Created by Zoe Embalsado, 9-Emerald SA Campus</label></center>
+</div>
+
+</body>
+</html>
